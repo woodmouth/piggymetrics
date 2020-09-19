@@ -39,25 +39,30 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
         // TODO persist clients details
+        // TODO 测试发现env对象没有正确初始化，查询的属性为null，现在先注释了这些代码
 
         // @formatter:off
         clients.inMemory()
                 .withClient("browser")
+                .secret("password")
                 .authorizedGrantTypes("refresh_token", "password")
                 .scopes("ui")
                 .and()
                 .withClient("account-service")
-                .secret(env.getProperty("ACCOUNT_SERVICE_PASSWORD"))
+//                .secret(env.getProperty("ACCOUNT_SERVICE_PASSWORD"))
+                .secret("password")
                 .authorizedGrantTypes("client_credentials", "refresh_token")
                 .scopes("server")
                 .and()
                 .withClient("statistics-service")
-                .secret(env.getProperty("STATISTICS_SERVICE_PASSWORD"))
+//                .secret(env.getProperty("STATISTICS_SERVICE_PASSWORD"))
+                .secret("password")
                 .authorizedGrantTypes("client_credentials", "refresh_token")
                 .scopes("server")
                 .and()
                 .withClient("notification-service")
-                .secret(env.getProperty("NOTIFICATION_SERVICE_PASSWORD"))
+//                .secret(env.getProperty("NOTIFICATION_SERVICE_PASSWORD"))
+                .secret("password")
                 .authorizedGrantTypes("client_credentials", "refresh_token")
                 .scopes("server");
         // @formatter:on
@@ -78,5 +83,4 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
                 .checkTokenAccess("isAuthenticated()")
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
-
 }

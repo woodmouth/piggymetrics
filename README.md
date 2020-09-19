@@ -272,3 +272,5 @@ Also, Service Discovery mechanism needs some time after all applications startup
 ## Contributions are welcome!
 
 PiggyMetrics is open source, and would greatly appreciate your help. Feel free to suggest and implement improvements.
+
+<林伟文> 我修改了配置和部分代码，终于在Macbook Pro上调通，用户名spring, 密码123456可以登录，系统运行前要启动笔记本上的MongoDB和RabbitMQ

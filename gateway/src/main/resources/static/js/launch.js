@@ -17,7 +17,9 @@ function requestOauthToken(username, password) {
 		url: 'uaa/oauth/token',
 		datatype: 'json',
 		type: 'post',
-		headers: {'Authorization': 'Basic YnJvd3Nlcjo='},
+		// headers: {'Authorization': 'Basic YnJvd3Nlcjo='},
+		// clientId:clientSecret=browser:password
+		headers: {'Authorization': 'Basic YnJvd3NlcjpwYXNzd29yZA=='},
 		async: false,
 		data: {
 			scope: 'ui',

@@ -3,18 +3,24 @@ security:
     client:
       clientId: account-service
       clientSecret: ${ACCOUNT_SERVICE_PASSWORD}
-      accessTokenUri: http://auth-service:5000/uaa/oauth/token
+#      accessTokenUri: http://auth-service:5000/uaa/oauth/token
+      accessTokenUri: http://localhost:5000/uaa/oauth/token
       grant-type: client_credentials
       scope: server
 
 spring:
   data:
     mongodb:
-      host: account-mongodb
-      username: user
-      password: ${MONGODB_PASSWORD}
-      database: piggymetrics
-      port: 27017
+      uri: mongodb://edwin:password@localhost:27017/?authSource=admin&authMechanism=SCRAM-SHA-1
+      database: auth
+#      host: account-mongodb
+#      host: localhost
+#      username: edwin
+#      password: ${MONGODB_PASSWORD}
+#      password: password
+#      database: piggymetrics
+#      auth: admin
+#      port: 27017
 
 server:
   servlet:
